@@ -26,7 +26,7 @@ async function fetchData() {
     try {
       const res = await fetch(url)
       const json = await res.json()
-      console.log(json);
+      console.log('fetch     ', json);
       }
     catch {
       console.log("YOU FUCKED UP");
@@ -37,17 +37,20 @@ async function fetchData() {
 
 
 
-
-  // Async Axios
+// Async Axios
 // import { get } from 'axios';
-
+// Don't use import, just get the CDN
+// https://cdnjs.com/libraries/axios
 // Make a request for a user with a given ID
+// returns object with a data object with the usable data
+// data.data
 const url = `https://pokeapi.co/api/v2/pokemon/charizard/`
-axios.get(url)
 
+// Promises with .then method
+axios.get(url)
   .then(function (response) {
     // handle success
-    console.log(response);
+    console.log('axios     ',response);
   })
   .catch(function (error) {
     // handle error
@@ -57,20 +60,34 @@ axios.get(url)
     // always executed
   });
 
+// promises with async await
+// returns object with a data object with the usable data
+// data.data
+const ApiCall = async () => {
+  const data = await axios(url)
+  console.log('async await', data)
+}
 
+ApiCall()
 
 // AJAX Request
-let xhttp = new XMLHttpRequest();
+// let xhttp = new XMLHttpRequest();
   
-  xhttp.open("GET", url, true);
-  xhttp.send();
+//   xhttp.open("GET", url, true);
+//   xhttp.send();
 
 // let send = xhttp.send()
-  console.log('========>')
 
+
+console.log('========>')
+
+// AJAX Request
 $.ajax(url)
-.then(data => console.log(data))
+.then(data => console.log('ajax      ',data))
 .catch(error => console.log(error))
+
+
+
 
 
 
